@@ -63,17 +63,21 @@ def board(toe_board):
 
 def players_turn(toe_board, player1, player2, turn):
     print('\n')
+    flag = True
+    while flag:
+        if turn % 2 == 0:
 
-    if turn % 2 == 0:
+            position = input('Player 1 where would you like to go?\n\n\n ')
+            mark = player1
+        else:
+            position = input("Player 2 where would you like to go?\n\n\n ")
+            mark = player2
 
-        position = input('Player 1 where would you like to go?\n\n\n ')
-        mark = player1
-    else:
-        position = input("Player 2 where would you like to go?\n\n\n ")
-        mark = player2
-    for i in range(len(toe_board)):
-        if position == toe_board[i]:
-            toe_board[i] = mark
+        for i in range(len(toe_board)):
+            if position == toe_board[i]:
+                toe_board[i] = mark
+                flag = False
+
     return toe_board
 
 
