@@ -2,33 +2,40 @@
 
 def main():
 
-    player1 = input("Please pick a marker 'X' or 'O' ")
-    toe_board = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-    win = False
+    yes = True
+    while yes:
+        player1 = input("Please pick a marker 'X' or 'O' ")
+        toe_board = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+        win = False
 
-    if player1 == 'X':
-        player2 = 'O'
-    else:
-        player2 = 'X'
-    turn = 0
-    board(toe_board)
-    while win == False:
-
-        toe_board = players_turn(toe_board, player1, player2, turn)
-        print('\n'*10)
+        if player1 == 'X':
+            player2 = 'O'
+        else:
+            player2 = 'X'
+        turn = 0
         board(toe_board)
-        win = check(toe_board)
+        while win == False:
 
-        turn += 1
-        if turn > 8:
-            break
+            toe_board = players_turn(toe_board, player1, player2, turn)
+            print('\n'*10)
+            board(toe_board)
+            win = check(toe_board)
 
-    if win and turn % 2 == 0:
-        print('Player 2 Wins!!!')
-    elif win and turn % 2 == 1:
-        print('Player 1 Wins!@!!')
-    else:
-        print("Cat's game, please play again: ")
+            turn += 1
+            if turn > 8:
+                break
+
+        if win and turn % 2 == 0:
+            print('Player 2 Wins!!!\n\n')
+        elif win and turn % 2 == 1:
+            print('Player 1 Wins!@!!\n\n')
+        else:
+            print("Cat's game")
+        play_again = input("Would you like to play again? (y or n) \n")
+        if play_again == 'y' or play_again == 'Y':
+            pass
+        else:
+            yes = False
 
 
 def check(toe_board):
